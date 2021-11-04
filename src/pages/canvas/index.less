@@ -1,0 +1,33 @@
+// 文字的颜色
+@text-color: green;
+
+.msr-btn-class(@radius, @backcolor, @focus-color: blue) {
+  color: white;
+  border-radius: @radius;
+  background-color: @backcolor;
+  border: 1px solid @backcolor;
+  cursor: pointer;
+  &:focus {
+    color: @focus-color;
+    outline: none;
+  }
+}
+
+.canvasless-main-modal {
+  border: 1px solid red;
+  .btn-box {
+    margin: 10px auto;
+    .btn1 {
+      width: 100px;
+      .msr-btn-class(5px, rgba(67, 121, 221, 0.5), #5832e4);
+    }
+    .btn2 {
+      width: 100px;
+      .msr-btn-class(5px, rgba(38, 233, 48, 0.5), green);
+    }
+    .btn3 {
+      width: 60px;
+      .msr-btn-class(5px, rgba(38, 155, 233, 0.5));
+    }
+  }
+}
