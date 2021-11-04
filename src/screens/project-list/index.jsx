@@ -11,6 +11,8 @@ const ProjectListScreen = () => {
     personId: "",
   });
 
+  const debounceParams = miu.useDebounce(param, 1000);
+
   const [users, setUsers] = useState([]);
 
   const [list, setList] = useState([]);
@@ -18,23 +20,23 @@ const ProjectListScreen = () => {
   //在param改变的时候去调用接口
   useEffect(() => {
     let data = {
-      name: param.name,
-      personId: param.personId,
+      name: debounceParams.name,
+      personId: debounceParams.personId,
     };
     fetch(`${apiUrl}/projects?${miu.formatData(miu.cleanObject(data))}`).then(async (response) => {
       if (response.ok) {
         setList(await response.json());
       }
     });
-  }, [param]);
+  }, [debounceParams]);
 
-  useEffect(() => {
+  miu.useMount(() => {
     fetch(`${apiUrl}/users`).then(async (response) => {
       if (response.ok) {
         setUsers(await response.json());
       }
     });
-  }, []);
+  });
 
   return (
     <div>

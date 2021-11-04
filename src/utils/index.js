@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export const isFalsy = (value) => (value === 0 ? false : !value);
 
 export const cleanObject = (object) => {
@@ -25,4 +27,48 @@ export const formatData = (data) => {
     }
   });
   return str;
+};
+
+export const useMount = (callback) => {
+  useEffect(() => {
+    callback();
+  }, []);
+};
+
+// export const debouce = (func, delay) => {
+//   let timeout;
+//   return () => {
+//     if (timeout) {
+//       clearTimeout(timeout);
+//     }
+//     timeout = setTimeout(() => {
+//       func();
+//     }, delay);
+//   };
+// };
+
+export const debounce = (func, delay) => {
+  let timeout;
+  return () => {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+      func();
+    }, delay);
+  };
+};
+
+export const useDebounce = (param, delay) => {
+  const [theParam, setTheParam] = useState(param);
+  useEffect(() => {
+    let timeout;
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => {
+      setTheParam(param);
+    }, delay);
+  }, [param]);
+  return theParam;
 };
