@@ -6,23 +6,23 @@ import List from "./list";
 const apiUrl = process.env.React_APP_API_URL;
 
 const ProjectListScreen = () => {
+  const [users, setUsers] = useState([]);
   const [param, setParam] = useState({
     name: "",
     personId: "",
   });
 
-  const debounceParams = miu.useDebounce(param, 1000);
-
-  const [users, setUsers] = useState([]);
+  const debounceParams = miu.useDebounce({ param, delay: 300 });
 
   const [list, setList] = useState([]);
 
   //在param改变的时候去调用接口
   useEffect(() => {
     let data = {
-      name: debounceParams.name,
-      personId: debounceParams.personId,
+      name: debounceParams?.name,
+      personId: debounceParams?.personId,
     };
+    // ${miu.formatData(miu.cleanObject(data))}
     fetch(`${apiUrl}/projects?${miu.formatData(miu.cleanObject(data))}`).then(async (response) => {
       if (response.ok) {
         setList(await response.json());

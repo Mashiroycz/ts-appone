@@ -59,16 +59,13 @@ export const debounce = (func, delay) => {
   };
 };
 
-export const useDebounce = (param, delay) => {
+export const useDebounce = ({ param, delay }) => {
   const [theParam, setTheParam] = useState(param);
   useEffect(() => {
-    let timeout;
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-    timeout = setTimeout(() => {
-      setTheParam(param);
+    const timeout = setTimeout(() => {
+      setTheParam({ ...param });
     }, delay);
-  }, [param]);
+    return () => clearTimeout(timeout);
+  }, [param, delay]);
   return theParam;
 };
