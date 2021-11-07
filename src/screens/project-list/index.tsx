@@ -12,7 +12,7 @@ const ProjectListScreen = () => {
     personId: "",
   });
 
-  const debounceParams = miu.useDebounce({ param, delay: 300 });
+  const debounceParams = miu.useDebounce({ param, delay: 200 });
 
   const [list, setList] = useState([]);
 

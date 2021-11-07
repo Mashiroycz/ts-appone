@@ -58,11 +58,11 @@ export const useMount = (callback: () => void) => {
 //     }, delay);
 //   };
 // };
-interface params{
-  param: any;
+interface params<T>{
+  param: T;
   delay?: number;
 }
-export const useDebounce = ({ param, delay }: params) => {
+export const useDebounce = <T>({ param, delay }: params<T>): T=> {
   const [theParam, setTheParam] = useState(param);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -72,3 +72,18 @@ export const useDebounce = ({ param, delay }: params) => {
   }, [param, delay]);
   return theParam;
 };
+
+export const useArray =  <T>(initialArray: T[]) => {
+  const [value, setValue] = useState(initialArray);
+  return {
+    value,
+    setValue,
+    add: (item: T)=> setValue([...value, item]),
+    clear: ()=> setValue([]),
+    removeIndex: (index: number)=>{
+      const copy = [...value];
+      copy.splice(index, 1);
+      setValue(copy);
+    }
+  }
+}

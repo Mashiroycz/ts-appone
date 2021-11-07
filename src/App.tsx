@@ -11,6 +11,7 @@ import { Button } from "antd";
 import "./App.css";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import CanvasLess from "./pages/canvas/canvas";
+import Test from "./pages/test/index";
 import ProjectList from "./screens/project-list";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
             <Button>项目列表</Button>
           </Link>
         </div>
-        <Route path="/canvas/canvasless" component={CanvasLess} />
+        <Route path="/canvas/canvasless" component={Test} />
         <Route path="/screens/project-list" component={ProjectList} />
       </BrowserRouter>
     </div>
