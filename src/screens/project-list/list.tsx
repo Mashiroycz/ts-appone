@@ -1,4 +1,18 @@
-const List = ({ list, users }) => {
+import { User } from "./search-panel";
+
+interface Project{
+  id: string;
+  name: string;
+  personId :string;
+  pin: boolean;
+  organization: string;
+}
+
+interface ListProps{
+  list: Project[];
+  users: User[];
+}
+const List = ({ list, users }: ListProps) => {
   return (
     <table>
       <thead>
@@ -8,7 +22,7 @@ const List = ({ list, users }) => {
         </tr>
       </thead>
       <tbody>
-        {list.map((project) => (
+        {list.map((project: any) => (
           <tr key={project.id}>
             <td>{project.name}</td>
             <td>{users.find((user) => user.id === project.personId)?.name || "default"}</td>

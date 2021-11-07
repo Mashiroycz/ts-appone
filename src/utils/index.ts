@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export const isFalsy = (value) => (value === 0 ? false : !value);
+export const isFalsy = (value: any) => (value === 0 ? false : !value);
 
-export const cleanObject = (object) => {
+export const cleanObject = (object: any) => {
   const result = { ...object };
   Object.keys(object).forEach((key) => {
     const value = object[key];
@@ -13,7 +13,7 @@ export const cleanObject = (object) => {
   return result;
 };
 
-export const formatData = (data) => {
+export const formatData = (data: any) => {
   const arr = Object.keys(data);
   let str = "";
   if (!data || arr.length < 1) {
@@ -29,7 +29,7 @@ export const formatData = (data) => {
   return str;
 };
 
-export const useMount = (callback) => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
   }, []);
@@ -47,19 +47,22 @@ export const useMount = (callback) => {
 //   };
 // };
 
-export const debounce = (func, delay) => {
-  let timeout;
-  return () => {
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-    timeout = setTimeout(() => {
-      func();
-    }, delay);
-  };
-};
-
-export const useDebounce = ({ param, delay }) => {
+// export const debounce = (func, delay) => {
+//   let timeout;
+//   return () => {
+//     if (timeout) {
+//       clearTimeout(timeout);
+//     }
+//     timeout = setTimeout(() => {
+//       func();
+//     }, delay);
+//   };
+// };
+interface params{
+  param: any;
+  delay?: number;
+}
+export const useDebounce = ({ param, delay }: params) => {
   const [theParam, setTheParam] = useState(param);
   useEffect(() => {
     const timeout = setTimeout(() => {

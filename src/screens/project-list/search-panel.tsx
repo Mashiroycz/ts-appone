@@ -1,7 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-const SearchPanel = ({ param, setParam, users }) => {
+export interface User{
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  organization: string;
+}
+
+interface SearchPanelProps {
+  users: User[],
+  param: {
+    name: string;
+    personId: string;
+  },
+  setParam: (param: SearchPanelProps['param']) => void;
+}
+
+const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
   return (
     <form action="">
       <div>
