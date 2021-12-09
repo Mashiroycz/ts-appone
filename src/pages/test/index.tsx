@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import * as miu from "../../utils/index";
+import * as miu2 from "../../utils/indexTemp";
 
 const TsReactTest = () => {
   const persons: { name: string; age: number }[] = [
     { name: "jack", age: 25 },
     { name: "mae", age: 22 },
   ];
-  const { value, clear, removeIndex, add } = miu.useArray(persons);
+  const { value, add, removeIndex, clear } = miu.useArray(persons);
 
-  miu.useMount(() => {});
+  miu.useMount(() => {
+    console.log("adde");
+    // miu.add;
+    miu2.add()
+  });
 
   return (
     <div>

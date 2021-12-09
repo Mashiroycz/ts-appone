@@ -82,7 +82,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "json-server": "json-server __json_server_mock__/db.json --watch --port 4000"
+    "json-server": "json-server __json_server_mock__/db.json --watch --port 4000 --middlewares ./__json_server_mock__/middleware.js"
   },
   "eslintConfig": {
     "extends": [

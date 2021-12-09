@@ -81,9 +81,14 @@ export const useArray =  <T>(initialArray: T[]) => {
     add: (item: T)=> setValue([...value, item]),
     clear: ()=> setValue([]),
     removeIndex: (index: number)=>{
+      console.log('ffff');
       const copy = [...value];
       copy.splice(index, 1);
       setValue(copy);
     }
   }
 }
+
+export const add = (a: number, b: number):number => {
+  return a + b;
+};
