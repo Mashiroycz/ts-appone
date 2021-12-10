@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 
-const apiUrl = process.env.React_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
 export const Login = () => {
   const login = (params: { username: string; password: string }) => {
     fetch(`${apiUrl}/login`, {

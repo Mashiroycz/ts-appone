@@ -3,7 +3,7 @@ import SearchPanel from "./search-panel";
 import * as miu from "../../utils/index";
 import List from "./list";
 
-const apiUrl = process.env.React_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
