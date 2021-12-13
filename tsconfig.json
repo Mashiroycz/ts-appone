@@ -16,7 +16,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
+    //   "isolatedModules": true, 修改时间2021/12/11 10.50,为了解决文件必须import，export问题
     "noEmit": true,
     "jsx": "react-jsx"
   },
