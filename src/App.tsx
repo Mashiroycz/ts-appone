@@ -6,7 +6,7 @@
  * @LastEditors: yinchengzong
  * @LastEditTime: 2021-08-19 18:51:11
  */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "antd";
 import "./App.css";
 import { BrowserRouter, Link, Route } from "react-router-dom";
